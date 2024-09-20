@@ -1,0 +1,30 @@
+-- Crear la tabla 'autos'
+CREATE TABLE autos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    anio_fabricacion INT
+);
+
+-- Procedimiento almacenado para insertar un auto
+DELIMITER //
+CREATE PROCEDURE InsertAuto(IN nombre VARCHAR(100), IN anio_fabricacion INT)
+BEGIN
+    INSERT INTO autos (nombre, anio_fabricacion) VALUES (nombre, anio_fabricacion);
+END //
+DELIMITER ;
+
+-- Procedimiento almacenado para eliminar un auto
+DELIMITER //
+CREATE PROCEDURE DeleteAuto(IN auto_id INT)
+BEGIN
+    DELETE FROM autos WHERE id = auto_id;
+END //
+DELIMITER ;
+
+-- Procedimiento almacenado para consultar todos los autos
+DELIMITER //
+CREATE PROCEDURE GetAutos()
+BEGIN
+    SELECT * FROM autos;
+END //
+DELIMITER ;
